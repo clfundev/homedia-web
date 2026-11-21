@@ -2,7 +2,7 @@
 import { fileSystemApi, libraryApi } from '@/api/api'
 import type { Dir, File, LibraryType } from '@/models/models'
 import { ElMessage } from 'element-plus'
-import { computed, onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const loading = ref<boolean>(true)
 
@@ -23,16 +23,7 @@ const libraryTypeOptions: LibraryTypeOption[] = [
   { value: 'IMAGE', label: 'Photo' },
 ]
 
-const props = defineProps({
-  modelValue: { type: Boolean, default: false },
-})
-
-const emit = defineEmits(['update:modelValue'])
-
-const visible = computed({
-  get: () => props.modelValue,
-  set: (v) => emit('update:modelValue', v),
-})
+const visible = defineModel<boolean>({ required: true })
 
 async function fetchDirectory(path: string) {
   loading.value = true
