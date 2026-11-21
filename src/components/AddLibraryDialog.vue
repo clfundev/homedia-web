@@ -79,13 +79,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-dialog
-    v-model="visible"
-    title="Add Library"
-    class="add-library-dialog"
-    align-center
-    :close-on-click-modal="false"
-  >
+  <el-dialog v-model="visible" title="Add Library" class="add-library-dialog" align-center>
     <div class="content">
       <div>
         <span>Title</span>
@@ -131,8 +125,8 @@ onMounted(() => {
 
     <template #footer>
       <div class="dialog-footer">
-        <el-button @click="visible = false">取消</el-button>
-        <el-button type="primary" @click="handleConfirm">添加</el-button>
+        <el-button @click="visible = false">Cancel</el-button>
+        <el-button type="primary" @click="handleConfirm">Confirm</el-button>
       </div>
     </template>
   </el-dialog>
