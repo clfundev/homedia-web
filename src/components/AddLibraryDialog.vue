@@ -82,7 +82,7 @@ onMounted(() => {
   <el-dialog
     v-model="visible"
     title="Add Library"
-    width="50%"
+    class="add-library-dialog"
     align-center
     :close-on-click-modal="false"
   >
@@ -160,5 +160,40 @@ onMounted(() => {
 
 :deep(.dir-row) {
   cursor: pointer;
+}
+
+/* -------- 对话框的响应式宽度 (断点定义与el-col一致) -------- */
+:global(.add-library-dialog) {
+  --el-dialog-width: 66.66%; /* 默认兜底 :sm="16" */
+}
+
+@media screen and (max-width: 767px) {
+  :global(.add-library-dialog) {
+    --el-dialog-width: 83.33%; /* :xs="20" */
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  :global(.add-library-dialog) {
+    --el-dialog-width: 66.66%; /* :sm="16" */
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  :global(.add-library-dialog) {
+    --el-dialog-width: 66.66%; /* :md="16" */
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1919px) {
+  :global(.add-library-dialog) {
+    --el-dialog-width: 50%; /* :lg="12" */
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  :global(.add-library-dialog) {
+    --el-dialog-width: 50%; /* :xl="12" */
+  }
 }
 </style>
