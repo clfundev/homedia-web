@@ -2,7 +2,7 @@
 import { fileSystemApi, libraryApi } from '@/api/api'
 import type { Dir, File, LibraryType } from '@/models/models'
 import { ElMessage } from 'element-plus'
-import { onMounted, ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const loading = ref<boolean>(true)
 
@@ -73,8 +73,12 @@ async function handleConfirm() {
   }
 }
 
-onMounted(() => {
-  fetchDirectory('')
+// 对话框展示时请求目录信息
+watch(visible, (newValue) => {
+  if (newValue) {
+    currentDir.value = null
+    fetchDirectory('')
+  }
 })
 </script>
 
